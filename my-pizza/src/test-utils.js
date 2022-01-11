@@ -12,7 +12,7 @@ configure({
 
 export const renderWithRouter = (component) => {
   const history = createMemoryHistory();
-  console.log(render(<Router history={history}>{component}</Router>));
+
   return {
     ...render(<Router history={history}>{component}</Router>),
   };
