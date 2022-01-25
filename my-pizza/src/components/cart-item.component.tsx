@@ -42,6 +42,7 @@ const CartItem = (props: ICartItem) => {
       <div className="cart__item-count">
         <div
           onClick={onMinus}
+          data-testid="minus-item-cart"
           className="button button--outline button--circle cart__item-count-minus"
         >
           <svg
@@ -64,6 +65,7 @@ const CartItem = (props: ICartItem) => {
         <b>{totalCount}</b>
         <div
           onClick={onPlus}
+          data-testid="plus-item-cart"
           className="button button--outline button--circle cart__item-count-plus"
         >
           <svg
@@ -88,7 +90,12 @@ const CartItem = (props: ICartItem) => {
         <b>{totalPrice} ₽</b>
       </div>
       <div className="cart__item-remove">
-        <Button onClick={onRemove} className="button--circle" outline>
+        <Button
+          onClick={onRemove}
+          data-testid="delete-item-cart"
+          className="button--circle"
+          outline
+        >
           <svg
             width="10"
             height="10"

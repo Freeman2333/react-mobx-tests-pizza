@@ -14,6 +14,7 @@ const Button = (props: IButton) => {
   return (
     <button
       onClick={onClick}
+      {...props}
       className={classNames('button', className, {
         'button--outline': outline,
       })}

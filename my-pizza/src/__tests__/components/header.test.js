@@ -14,6 +14,10 @@ describe('Header Component', () => {
       },
     });
 
-    // expect(screen.getByText('React Pizza')).toBeInTheDocument();
+    expect(screen.getByText('React Pizza')).toBeInTheDocument();
+    expect(screen.getByText('1375 ₽').closest('span')).toBeInTheDocument();
+    expect(screen.getByText('5').closest('span')).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

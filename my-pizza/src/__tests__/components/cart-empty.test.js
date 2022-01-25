@@ -5,7 +5,6 @@ import CartEmpty from '../../components/cart-empty.component';
 
 describe('CartEmpty Component', () => {
   it('should render with Link', () => {
-    const route = '/cart';
     const { container } = renderWithRouter(<CartEmpty />);
 
     expect(screen.getByText(/Корзина пуста/)).toBeInTheDocument();

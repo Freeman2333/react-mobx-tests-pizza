@@ -64,7 +64,7 @@ describe('FormOrderPopup Component', () => {
       const mockVisibleForm = jest.fn();
       const mockPhoneOrder = jest.fn();
 
-      const { debug } = render(
+      render(
         <FormOrderPopup
           isVisibleForm={true}
           onVisibleForm={mockVisibleForm}
@@ -79,12 +79,28 @@ describe('FormOrderPopup Component', () => {
 
       userEvent.click(screen.getByText('Сбросить'));
       expect(textbox).toHaveValue('');
-      // userEvent.click(screen.getByText('Отправить'));
-      debug();
+      userEvent.click(screen.getByText('Отправить'));
+
       const errorMessage = screen.getByTestId('error-message-window');
 
-      // userEvent.click(screen.getByText('Отправить'));
-      // expect(errorMessage).toHaveClass('form-order--error');
+      userEvent.click(screen.getByText('Отправить'));
+      expect(errorMessage).toHaveClass('form-order--error');
+      expect(errorMessage).toHaveTextContent('Введите свой телефон');
+
+      userEvent.type(textbox, '555666');
+      userEvent.click(screen.getByText('Отправить'));
+      expect(errorMessage).toHaveTextContent(
+        'Не верный формат ввода: (555) 555-5555'
+      );
+    });
+  });
+
+  describe('normalizeInput', () => {
+    it('all params is number', () => {
+      const normalize = normalizeInput(5556667777, 5556668888);
+
+      expect(normalize).toBe(5556667777);
+      expect(typeof normalize).toBe('number');
     });
   });
 });
